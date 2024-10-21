@@ -13,6 +13,7 @@ require (
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376
 	github.com/go-git/go-billy/v5 v5.5.1-0.20240427054813-8453aa90c6ec
 	github.com/go-git/go-git-fixtures/v4 v4.3.2-0.20231010084843-55a94097c399
+	github.com/go-git/go-git/v5 v5.12.0
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
 	github.com/google/go-cmp v0.6.0
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
