@@ -1549,7 +1549,7 @@ func expand_ref(s storer.ReferenceStorer, ref plumbing.ReferenceName) (*plumbing
 func (r *Repository) ResolveRevision(in plumbing.Revision) (*plumbing.Hash, error) {
 	rev := in.String()
 	if rev == "" {
-		return &plumbing.ZeroHash, plumbing.ErrReferenceNotFound
+		return &plumbing.ZeroHash, fmt.Errorf("reference not found: revision is empty")
 	}
 
 	p := revision.NewParserFromString(rev)
@@ -1605,7 +1605,7 @@ func (r *Repository) ResolveRevision(in plumbing.Revision) (*plumbing.Hash, erro
 			}
 
 			if !gotOne {
-				return &plumbing.ZeroHash, plumbing.ErrReferenceNotFound
+				return &plumbing.ZeroHash, fmt.Errorf("reference not found: failed to resolve revisionRef %s to a commit or tag", revisionRef)
 			}
 
 		case revision.CaretPath:
@@ -1680,7 +1680,7 @@ func (r *Repository) ResolveRevision(in plumbing.Revision) (*plumbing.Hash, erro
 	}
 
 	if commit == nil {
-		return &plumbing.ZeroHash, plumbing.ErrReferenceNotFound
+		return &plumbing.ZeroHash, fmt.Errorf("reference not found: no commit found for revision %s", rev)
 	}
 
 	return &commit.Hash, nil
